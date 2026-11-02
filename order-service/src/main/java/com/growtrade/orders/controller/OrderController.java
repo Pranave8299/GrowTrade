@@ -7,6 +7,7 @@ import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -32,5 +33,12 @@ public class OrderController {
             @PathVariable UUID orderId) {
 
         return orderService.getOrder(orderId);
+    }
+
+    @GetMapping
+    public List<OrderResponse> getOrdersByUserId(
+            @RequestParam UUID userId) {
+
+        return orderService.getOrdersByUserId(userId);
     }
 }
